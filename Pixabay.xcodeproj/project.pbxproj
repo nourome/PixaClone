@@ -26,6 +26,7 @@
 		14811EEE20C3B9E30047EB81 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EED20C3B9E30047EB81 /* CategoryViewCell.swift */; };
 		14811EF220C3BF090047EB81 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF120C3BF090047EB81 /* CategoryViewModel.swift */; };
 		14811EF420C3D0B60047EB81 /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */; };
+		14811EF720C506170047EB81 /* PixaCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */; };
 		DB993385B57648DC5262BCD3 /* Pods_Pixabay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD484CB576EE8DE3BCD82D7 /* Pods_Pixabay.framework */; };
 		FCF02F9071708FA58CADEE82 /* Pods_PixabayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9AA352C6EADD004A5A61F1 /* Pods_PixabayTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		14811EED20C3B9E30047EB81 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		14811EF120C3BF090047EB81 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
+		14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		2DD484CB576EE8DE3BCD82D7 /* Pods_Pixabay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pixabay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC26C0641DB5499C7C9D939 /* Pods-PixabayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixabayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PixabayTests/Pods-PixabayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F9AA352C6EADD004A5A61F1 /* Pods_PixabayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixabayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 				14811EEB20C3B97A0047EB81 /* Cells */,
 				14811EEA20C3B9590047EB81 /* Model */,
 				14811EE420C01F840047EB81 /* ViewModels */,
+				14811EF520C505F10047EB81 /* Delegates */,
 				14811EE920C273820047EB81 /* Controllers */,
 			);
 			path = Pixabay;
@@ -185,6 +188,14 @@
 				140BF72E20BBDC76002A55E3 /* LaunchScreen.storyboard */,
 			);
 			path = app;
+			sourceTree = "<group>";
+		};
+		14811EF520C505F10047EB81 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		A28A059BCC37330AFA6A6208 /* Frameworks */ = {
@@ -427,6 +438,7 @@
 				14811EA520BFECE60047EB81 /* GategoryCollectionViewController.swift in Sources */,
 				14811EE620C01FA40047EB81 /* PageViewModel.swift in Sources */,
 				1455568820BD3AFF007B71A6 /* PixaBayAPI.swift in Sources */,
+				14811EF720C506170047EB81 /* PixaCollectionViewDelegate.swift in Sources */,
 				14811EA320BFEC320047EB81 /* PixaPageViewController.swift in Sources */,
 				140BF72220BBDC73002A55E3 /* AppDelegate.swift in Sources */,
 				1455568620BD346A007B71A6 /* PixaModel.swift in Sources */,

@@ -13,10 +13,18 @@ private let reuseIdentifier = "cell"
 class PixaCollectionViewController: UICollectionViewController {
 
     var viewModel: PixaCollectionViewModel!
+    var collectionViewDelegate: PixaCollectionViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    // viewModel = PixaCollectionViewModel()
+        
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.sectionHeadersPinToVisibleBounds = true
+        }
+        viewModel = PixaCollectionViewModel()
+        collectionViewDelegate = PixaCollectionViewDelegate(viewModel: viewModel)
+        self.collectionView?.delegate = collectionViewDelegate
+        self.collectionView?.dataSource = collectionViewDelegate
       
     }
 
@@ -35,7 +43,7 @@ class PixaCollectionViewController: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
+    /*MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -57,7 +65,7 @@ class PixaCollectionViewController: UICollectionViewController {
     }
     
     
-    
+    */
 
     // MARK: UICollectionViewDelegate
 
@@ -92,6 +100,7 @@ class PixaCollectionViewController: UICollectionViewController {
 
 }
 
+/*
 extension PixaCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -108,4 +117,4 @@ extension PixaCollectionViewController: UICollectionViewDelegateFlowLayout {
     
    
 }
-
+*/

@@ -37,6 +37,7 @@ enum PhotosCategory:(String) {
     
 }
 
+
 struct PixaResponse: Codable{
     let total: Int
     let totalHits: Int
@@ -46,6 +47,7 @@ struct PixaResponse: Codable{
 struct PixaPhotoModel: Codable {
     let type: String
     let tags: [String]?
+    let previewURL: String
     let previewWidth: Int
     let previewHeight: Int
     let webformatURL: URL

@@ -11,7 +11,7 @@ import RxSwift
 
 struct PixaBayAPI {
     static private let api = "https://pixabay.com/api/"
-    static private let key = "6518569-4d75e16c86e11f24a357edc18"
+    static private let key = "9186145-a30a2be1c35b6d8267cab481e"
     public enum Keys: String {
         case key = "key"
         case q = "q"

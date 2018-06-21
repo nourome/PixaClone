@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PixaViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    var imageUrl: URL? {
+        didSet {
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: self.imageUrl!, options: [.transition(.fade(0.3))])
+        }
+    }
+ 
 }

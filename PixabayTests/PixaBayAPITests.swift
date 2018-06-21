@@ -30,10 +30,9 @@ class PixaBayAPITests: XCTestCase {
             .category: ""
         ]
         
-        guard let request = PixaBayAPI.buildRequestURL(with: params) else {
-            XCTFail()
-            return
-        }
+        XCTAssertNoThrow(try PixaBayAPI.buildRequestURL(with: params))
+ 
+        let request = try! PixaBayAPI.buildRequestURL(with: params)
         
         let components = URLComponents(url: request, resolvingAgainstBaseURL: true)
         guard let key_item = components?.queryItems?.first(where: { item in
@@ -43,8 +42,8 @@ class PixaBayAPITests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(key_item.value, "6518569-4d75e16c86e11f24a357edc18")
-
+        XCTAssertEqual(key_item.value, "9186145-a30a2be1c35b6d8267cab481e")
+        
     }
     
     func testRequestEditorUrl() {
@@ -55,10 +54,9 @@ class PixaBayAPITests: XCTestCase {
             .category: ""
         ]
         
-        guard let request = PixaBayAPI.buildRequestURL(with: params) else {
-            XCTFail()
-            return
-        }
+        XCTAssertNoThrow(try PixaBayAPI.buildRequestURL(with: params))
+        
+        let request = try! PixaBayAPI.buildRequestURL(with: params)
         
         let components = URLComponents(url: request, resolvingAgainstBaseURL: true)
         guard let editor_choice_item = components?.queryItems?.first(where: { item in
@@ -98,10 +96,8 @@ class PixaBayAPITests: XCTestCase {
             .category: "nature"
         ]
         
-        guard let request = PixaBayAPI.buildRequestURL(with: params) else {
-            XCTFail()
-            return
-        }
+        XCTAssertNoThrow(try PixaBayAPI.buildRequestURL(with: params))
+        let request = try! PixaBayAPI.buildRequestURL(with: params)
         
         let components = URLComponents(url: request, resolvingAgainstBaseURL: true)
         
@@ -141,10 +137,9 @@ class PixaBayAPITests: XCTestCase {
             .category: ""
         ]
         
-        guard let request = PixaBayAPI.buildRequestURL(with: params, latest: true) else {
-            XCTFail()
-            return
-        }
+        XCTAssertNoThrow(try PixaBayAPI.buildRequestURL(with: params))
+        
+        let request = try! PixaBayAPI.buildRequestURL(with: params)
         
         let components = URLComponents(url: request, resolvingAgainstBaseURL: true)
         
@@ -183,7 +178,7 @@ class PixaBayAPITests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(order_item.value, "latest")
+        XCTAssertEqual(order_item.value, "popular")
         
       
     }

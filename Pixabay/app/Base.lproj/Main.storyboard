@@ -102,7 +102,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="vMX-c4-gi8" customClass="CategoryViewCell" customModule="Pixabay" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="vMX-c4-gi8" customClass="CategoryViewCell" customModule="Pixabay" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="126" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -173,26 +173,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="U6d-H4-vIy">
-                            <size key="itemSize" width="302" height="154"/>
+                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="NKI-hY-epF">
+                            <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="B4t-Gs-lsk" customClass="PixaViewCell" customModule="Pixabay" customModuleProvider="target">
-                                <rect key="frame" x="36.666666666666664" y="94" width="302" height="154"/>
+                                <rect key="frame" x="0.0" y="94" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="302" height="154"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bearded-iris-3422503_1280" translatesAutoresizingMaskIntoConstraints="NO" id="2Ln-QJ-YgY">
-                                            <rect key="frame" x="0.0" y="0.0" width="302" height="154"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent" translatesAutoresizingMaskIntoConstraints="NO" id="2Ln-QJ-YgY">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.77739689629999997" blue="0.69286777209999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.99756187080536918" blue="1" alpha="0.32115142617449666" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="2Ln-QJ-YgY" secondAttribute="bottom" id="ATn-eA-24D"/>
                                     <constraint firstAttribute="trailing" secondItem="2Ln-QJ-YgY" secondAttribute="trailing" id="GfX-nD-dnj"/>
@@ -204,21 +205,21 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eWz-3H-dlO">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCell" id="J83-bj-h2w">
                             <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOM-8R-4Yf">
-                                    <rect key="frame" x="8" y="18" width="51" height="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSZ-pg-sxV">
+                                    <rect key="frame" x="8" y="18" width="61" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottomMargin" secondItem="hOM-8R-4Yf" secondAttribute="bottom" id="Egs-We-Nhq"/>
-                                <constraint firstItem="hOM-8R-4Yf" firstAttribute="leading" secondItem="eWz-3H-dlO" secondAttribute="leadingMargin" id="e8s-Tl-l8v"/>
+                                <constraint firstItem="tSZ-pg-sxV" firstAttribute="leading" secondItem="J83-bj-h2w" secondAttribute="leadingMargin" id="A70-EB-LGp"/>
+                                <constraint firstAttribute="bottom" secondItem="tSZ-pg-sxV" secondAttribute="bottom" constant="8" id="wOW-Gs-QwI"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
@@ -230,12 +231,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u40-sb-eBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2327" y="-216"/>
+            <point key="canvasLocation" x="2325.5999999999999" y="-216.50246305418719"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bearded-iris-3422503_1280" width="960" height="1280"/>
         <image name="menu-1" width="20" height="66"/>
         <image name="nature-3126513_1280" width="1280" height="720"/>
+        <image name="transparent" width="100" height="100"/>
     </resources>
 </document>

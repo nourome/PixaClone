@@ -8,7 +8,7 @@
 //
 
 import Foundation
-
+import CoreGraphics
 
 enum PhotosCategory:(String) {
     case Fashion = "fashion"
@@ -38,19 +38,49 @@ enum PhotosCategory:(String) {
 }
 
 
-struct PixaResponse: Codable{
-    let total: Int
-    let totalHits: Int
-    let pixaPhotoModel: [PixaPhotoModel]?
+
+enum ResponseStatus: Equatable {
+    static func == (lhs: ResponseStatus, rhs: ResponseStatus) -> Bool {
+        
+        switch (lhs,rhs) {
+        case (.Dummy, .Dummy):
+            return true
+        case (.Success, .Success):
+            return true
+        case (.Failed(_),.Failed(_)):
+            return true
+        default:
+            return false
+        }
+    }
+       
+    
+    case Dummy
+    case Success
+    case Failed(Error)
 }
 
-struct PixaPhotoModel: Codable {
-    let type: String
-    let tags: [String]?
-    let previewURL: String
+enum ReuseIdentifiers: String {
+    case Cell = "cell"
+    case Header = "HeaderCell"
+}
+
+struct PixaResponse: Decodable {
+    let total: Int
+    let totalHits: Int
+    let hits: [PixaPhotoModel]?
+}
+
+
+
+struct PixaPhotoModel: Decodable {
+    let id: Int
+    let tags: String?
+    let previewURL: URL?
     let previewWidth: Int
     let previewHeight: Int
-    let webformatURL: URL
+    let webformatURL: URL?
     let webformatWidth: Int
     let webformatHeight: Int
+
 }

@@ -14,6 +14,7 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
     
     var cache: [IndexPath:UICollectionViewLayoutAttributes] = [:]
     var cellSizerDelegate : CellSizerDelegate?
+    let  defaultCellSize =  CGSize(width: 150, height: 150)
     override init() {
         super.init()
         self.sectionHeadersPinToVisibleBounds = true
@@ -21,64 +22,67 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
         self.minimumLineSpacing = 3.0
     }
     
-    func clearCache(upTo: Int) {
-        let indexPath = IndexPath(item: upTo, section: 0)
-        cache = cache.filter{ $0.key.item < indexPath.item }
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
     override func prepare() {
-        super.prepare()
+        
         let defaultSize =  CGSize(width: 150, height: 150)
         var first = true
         if let items = collectionView?.numberOfItems(inSection: 0) {
             for item in 0..<items {
                 let indexPath = IndexPath(item: item, section: 0)
                 if !cache.keys.contains(indexPath) {
-                let attrs = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-                if item == 0 {
-                    let cellSize = cellSizerDelegate?.sizeForCell(with: indexPath) ?? defaultSize
-                    attrs.frame = CGRect(x: 0, y: 0, width: cellSize.width, height: cellSize.height)
-                    first = !first
-                }else {
-                    let previousIndexPath = IndexPath(item: indexPath.item-1, section: 0)
-                    let previousAttrs = cache[previousIndexPath]!
-                    if  !first {
-                        let width = collectionView!.frame.width - previousAttrs.frame.width - self.minimumInteritemSpacing
-                        let rightPv = previousAttrs.frame.origin.x + previousAttrs.size.width + self.minimumInteritemSpacing
-                        attrs.frame.origin.x = rightPv
-                        attrs.frame.origin.y = previousAttrs.frame.origin.y
-                        attrs.frame.size = CGSize(width: width, height: previousAttrs.frame.height)
+                    let attrs = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                    if item == 0 {
+                        let cellSize = cellSizerDelegate?.sizeForCell(with: indexPath) ?? defaultSize
+                        attrs.frame = CGRect(x: 0, y: 0, width: cellSize.width, height: cellSize.height)
                         first = !first
-                    } else {
-                        attrs.frame.size = cellSizerDelegate?.sizeForCell(with: indexPath) ?? defaultSize
-                        attrs.frame.origin.y = previousAttrs.frame.height + previousAttrs.frame.origin.y + self.minimumLineSpacing
-                        first = !first
+                    }else {
+                        let previousIndexPath = IndexPath(item: indexPath.item-1, section: 0)
+                        let previousAttrs = cache[previousIndexPath]!
+                        if  !first {
+                            let width = collectionView!.frame.width - previousAttrs.frame.width - self.minimumInteritemSpacing
+                            let rightPv = previousAttrs.frame.origin.x + previousAttrs.size.width + self.minimumInteritemSpacing
+                            attrs.frame.origin.x = rightPv
+                            attrs.frame.origin.y = previousAttrs.frame.origin.y
+                            attrs.frame.size = CGSize(width: width, height: previousAttrs.frame.height)
+                            first = !first
+                        } else {
+                            attrs.frame.size =  cellSizerDelegate?.sizeForCell(with: indexPath) ?? defaultSize
+                            attrs.frame.origin.y = previousAttrs.frame.height + previousAttrs.frame.origin.y + self.minimumLineSpacing
+                            first = !first
+                        }
                     }
-                }
-                cache[indexPath] = attrs
+                    cache[indexPath] = attrs
                 }
             }
+            
         }
         
     }
     
-   
-  
+    func invalidateCells(at indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if cache.keys.contains(indexPath) {
+                cache.removeValue(forKey: indexPath)
+            }
+        }
+        prepare()
+    }
+    
+    
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-       var layoutAttributes =  [UICollectionViewLayoutAttributes]()
+        var layoutAttributes =  [UICollectionViewLayoutAttributes]()
         let cachedAttributes = cache.flatMap { attrs ->  [UICollectionViewLayoutAttributes] in
             return [attrs.value]
             }.filter{rect.intersects($0.frame)}
-        
         layoutAttributes.append(contentsOf: cachedAttributes)
+        return layoutAttributes
         
-       return layoutAttributes
-       
     }
-
+    
 }
 
 

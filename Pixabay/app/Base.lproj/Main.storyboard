@@ -193,7 +193,7 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.99756187080536918" blue="1" alpha="0.32115142617449666" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.74061451342281881" green="0.61887837138120794" blue="0.62935799319999997" alpha="0.2852873322147651" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="2Ln-QJ-YgY" secondAttribute="bottom" id="ATn-eA-24D"/>
                                     <constraint firstAttribute="trailing" secondItem="2Ln-QJ-YgY" secondAttribute="trailing" id="GfX-nD-dnj"/>

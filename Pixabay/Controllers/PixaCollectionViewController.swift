@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Kingfisher
 
 
 class PixaCollectionViewController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
@@ -28,37 +29,40 @@ class PixaCollectionViewController: UICollectionViewController, UICollectionView
         collectionView?.prefetchDataSource = self
         (collectionView?.collectionViewLayout as? UICollectionViewEdgeLayout)?.cellSizerDelegate = viewModel
         loadPhotosAsync()
- 
+        
     }
+    
     
     func loadPhotosAsync() {
         viewModel.loadPhotos().observeOn(MainScheduler.instance).subscribe(onNext: { status in
             switch status {
-            case .Dummy:
-                 self.collectionView?.reloadData()
-             break
+            case .Start:
+                self.collectionView?.reloadData()
+            case .Cached:
+                self.collectionView?.insertItems(at: self.viewModel.loadedItems)
+                  self.stopPrefetching = false
             case .Success:
-                 self.collectionView?.insertItems(at: self.viewModel.loadedItems)
-                break
-                //self.collectionView?.collectionViewLayout.invalidateLayout()
+                self.collectionView?.insertItems(at: self.viewModel.loadedItems)
+                self.stopPrefetching = false
             case .Failed(let errorMsg):
                 print(errorMsg)
                 self.stopPrefetching = true
-                self.viewModel.cleanUpOnError()
+                self.collectionView?.reloadData()
             }
         }, onError: { err in
             print(err)
-            self.viewModel.clearDummyPhotos()
             self.collectionView?.reloadData()
         }, onCompleted: {
         }).disposed(by: disposeBag)
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
         if !stopPrefetching {
-        if indexPaths.last!.item > (viewModel.photos.count / 2) {
-            loadPhotosAsync()
-        }
+            if indexPaths.last!.item >= (viewModel.photos.count - 10) {
+                stopPrefetching = true
+                loadPhotosAsync()
+            }
         }
     }
     
@@ -67,7 +71,7 @@ class PixaCollectionViewController: UICollectionViewController, UICollectionView
         collectionViewLayout.invalidateLayout()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,7 +84,7 @@ class PixaCollectionViewController: UICollectionViewController, UICollectionView
 
 
 
-    
-   
+
+
 
 

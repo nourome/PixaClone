@@ -43,9 +43,11 @@ enum ResponseStatus: Equatable {
     static func == (lhs: ResponseStatus, rhs: ResponseStatus) -> Bool {
         
         switch (lhs,rhs) {
-        case (.Dummy, .Dummy):
+        case (.Start, .Start):
             return true
         case (.Success, .Success):
+            return true
+        case (.Cached, .Cached):
             return true
         case (.Failed(_),.Failed(_)):
             return true
@@ -54,9 +56,9 @@ enum ResponseStatus: Equatable {
         }
     }
        
-    
-    case Dummy
+    case Start
     case Success
+    case Cached
     case Failed(Error)
 }
 

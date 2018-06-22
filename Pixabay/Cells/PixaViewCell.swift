@@ -15,8 +15,14 @@ class PixaViewCell: UICollectionViewCell {
     
     var imageUrl: URL? {
         didSet {
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(with: self.imageUrl!, options: [.transition(.fade(0.3))])
+           let placeHolder = UIImage(named: "transparent")
+           imageView.kf.indicatorType = .none
+            if self.imageUrl != nil {
+            imageView.kf.setImage(with: self.imageUrl!, placeholder: placeHolder, options: [.transition(.fade(0.3)), .backgroundDecode], progressBlock: nil) { (img, error, type, url) in
+                self.imageView.isHidden = false
+            }
+            }
+    
         }
     }
  

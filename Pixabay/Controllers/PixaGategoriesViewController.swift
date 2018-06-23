@@ -9,17 +9,17 @@
 import UIKit
 
 
-class GategoryCollectionViewController: UICollectionViewController {
+class PixaGategoriesViewController: UICollectionViewController {
 
-    var viewModel: CategoryViewModel!
+    var viewModel = CategoryViewModel()
+    var delegate: CategoryDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
-        viewModel = CategoryViewModel()
-        viewModel.collectionSize = collectionView?.bounds.size
+       //viewModel.collectionSize = collectionView?.bounds.size
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,12 +52,19 @@ class GategoryCollectionViewController: UICollectionViewController {
         
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseIdentifiers.Header.rawValue, for: indexPath)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let selectedCategory = viewModel.selectedCategory(for: indexPath) {
+            delegate?.didSelect(selectedCategory)
+        }
+    }
 
     
 
 }
 
-extension GategoryCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension PixaGategoriesViewController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

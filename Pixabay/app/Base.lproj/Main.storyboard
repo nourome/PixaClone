@@ -18,12 +18,12 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="05F-bi-UJs" customClass="PixaPageViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxj-uP-NTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="-216"/>
+            <point key="canvasLocation" x="-186" y="-217"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Pixa Search View Controller-->
         <scene sceneID="ox5-l9-BUZ">
             <objects>
-                <viewController storyboardIdentifier="search" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj9-MY-4uk" customClass="SearchViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="search" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj9-MY-4uk" customClass="PixaSearchViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qCj-dR-7sk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,16 +37,16 @@
                                     <constraint firstAttribute="width" secondItem="pUQ-MK-9ta" secondAttribute="height" multiplier="10:33" id="Y3o-ea-l1o"/>
                                     <constraint firstAttribute="height" constant="27" id="myv-LB-q0p"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="menu-1"/>
+                                <state key="normal" backgroundImage="menu"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PixaClone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYg-1O-srU">
-                                <rect key="frame" x="16" y="16" width="134" height="44"/>
+                                <rect key="frame" x="16" y="41.666666666666664" width="134" height="43.999999999999993"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="31"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" barStyle="black" placeholder="Search free images.." translatesAutoresizingMaskIntoConstraints="NO" id="8vj-dp-fAQ">
-                                <rect key="frame" x="7" y="181" width="361" height="56"/>
+                                <rect key="frame" x="7" y="206.66666666666666" width="361" height="55.999999999999972"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Sj9-MY-4uk" id="J1X-Ig-KBe"/>
@@ -57,8 +57,8 @@
                         <constraints>
                             <constraint firstItem="8vj-dp-fAQ" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="7" id="078-sG-zfE"/>
                             <constraint firstItem="8vj-dp-fAQ" firstAttribute="centerX" secondItem="qCj-dR-7sk" secondAttribute="centerX" id="0Qe-WX-YHm"/>
+                            <constraint firstItem="eYg-1O-srU" firstAttribute="centerY" secondItem="pUQ-MK-9ta" secondAttribute="centerY" id="2Nf-AH-DEc"/>
                             <constraint firstItem="eYg-1O-srU" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="16" id="9fM-MP-pZ7"/>
-                            <constraint firstItem="eYg-1O-srU" firstAttribute="top" secondItem="qCj-dR-7sk" secondAttribute="top" constant="16" id="K85-h1-rub"/>
                             <constraint firstItem="pUQ-MK-9ta" firstAttribute="top" secondItem="K67-el-bOO" secondAttribute="top" constant="6" id="Lb6-Y1-Cbd"/>
                             <constraint firstItem="K67-el-bOO" firstAttribute="trailing" secondItem="8vj-dp-fAQ" secondAttribute="trailing" constant="7" id="Q5i-id-QfN"/>
                             <constraint firstAttribute="bottom" secondItem="fW9-9C-FLW" secondAttribute="bottom" id="RjB-HX-hXq"/>
@@ -85,25 +85,95 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="605.60000000000002" y="-248.27586206896552"/>
+            <point key="canvasLocation" x="601" y="-217"/>
         </scene>
-        <!--Gategory Collection View Controller-->
+        <!--Pixal Category Photos View Controller-->
+        <scene sceneID="CYJ-NS-YTw">
+            <objects>
+                <collectionViewController storyboardIdentifier="category_collection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OqT-oh-3CE" customClass="PixalCategoryPhotosViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" id="xoF-zY-k2s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="xqk-uQ-n9a">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="65"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wSh-kV-BLr" customClass="PixaViewCell" customModule="Pixabay" customModuleProvider="target">
+                                <rect key="frame" x="8" y="117" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mda-Ze-Qg6">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Mda-Ze-Qg6" secondAttribute="bottom" id="4qC-dc-EJ3"/>
+                                    <constraint firstItem="Mda-Ze-Qg6" firstAttribute="leading" secondItem="wSh-kV-BLr" secondAttribute="leading" id="8ZA-16-NzT"/>
+                                    <constraint firstItem="Mda-Ze-Qg6" firstAttribute="top" secondItem="wSh-kV-BLr" secondAttribute="top" id="8dQ-0T-oSB"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mda-Ze-Qg6" secondAttribute="trailing" id="zwZ-GP-XZK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="Mda-Ze-Qg6" id="kVT-hg-yB2"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCell" id="7CA-SJ-1aA">
+                            <rect key="frame" x="0.0" y="52" width="375" height="65"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bWr-LV-SCD">
+                                    <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <items>
+                                        <navigationItem id="rSt-Ac-MGx">
+                                            <barButtonItem key="leftBarButtonItem" systemItem="stop" id="3d8-1i-piq">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="dismissView:" destination="OqT-oh-3CE" id="Vpu-e1-WwP"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </navigationItem>
+                                    </items>
+                                </navigationBar>
+                            </subviews>
+                            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="OqT-oh-3CE" id="236-ln-1q3"/>
+                            <outlet property="delegate" destination="OqT-oh-3CE" id="SVl-WC-sdC"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="93r-UE-BLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2037.5999999999999" y="-988.66995073891633"/>
+        </scene>
+        <!--Pixa Gategories View Controller-->
         <scene sceneID="Dtq-It-AbJ">
             <objects>
-                <collectionViewController storyboardIdentifier="category" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Shi-Xx-ZSS" customClass="GategoryCollectionViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="category" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Shi-Xx-ZSS" customClass="PixaGategoriesViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" id="DLb-HN-fad">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="teU-Wi-nJ0">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="teU-Wi-nJ0">
                             <size key="itemSize" width="126" height="126"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="50" height="70"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="vMX-c4-gi8" customClass="CategoryViewCell" customModule="Pixabay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="126" height="126"/>
+                                <rect key="frame" x="0.0" y="70" width="126" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
@@ -139,11 +209,11 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderCell" id="tD3-Ii-aGe">
-                            <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2h-gt-Z1u">
-                                    <rect key="frame" x="8" y="18" width="95" height="24"/>
+                                    <rect key="frame" x="8" y="40" width="95" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -152,7 +222,7 @@
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="m2h-gt-Z1u" firstAttribute="leading" secondItem="tD3-Ii-aGe" secondAttribute="leadingMargin" id="S8s-Bs-Tdi"/>
-                                <constraint firstItem="m2h-gt-Z1u" firstAttribute="bottom" secondItem="tD3-Ii-aGe" secondAttribute="bottomMargin" id="WN2-jk-z9x"/>
+                                <constraint firstItem="m2h-gt-Z1u" firstAttribute="bottom" secondItem="tD3-Ii-aGe" secondAttribute="bottomMargin" constant="2" id="WN2-jk-z9x"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
@@ -163,17 +233,16 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drT-km-YzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1477.5999999999999" y="-248.27586206896552"/>
+            <point key="canvasLocation" x="1462" y="-217"/>
         </scene>
-        <!--Pixa Collection View Controller-->
+        <!--Pixa Editor View Controller-->
         <scene sceneID="fqo-fb-eCs">
             <objects>
-                <collectionViewController storyboardIdentifier="photos" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bAH-KJ-j8H" customClass="PixaCollectionViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="photos" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bAH-KJ-j8H" customClass="PixaEditorViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" id="Ybf-u6-gcF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="NKI-hY-epF">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -216,7 +285,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="tSZ-pg-sxV" firstAttribute="leading" secondItem="J83-bj-h2w" secondAttribute="leadingMargin" id="A70-EB-LGp"/>
                                 <constraint firstAttribute="bottom" secondItem="tSZ-pg-sxV" secondAttribute="bottom" constant="8" id="wOW-Gs-QwI"/>
@@ -235,7 +304,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="menu-1" width="20" height="66"/>
+        <image name="menu" width="20" height="66"/>
         <image name="nature-3126513_1280" width="1280" height="720"/>
         <image name="transparent" width="100" height="100"/>
     </resources>

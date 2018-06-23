@@ -14,14 +14,11 @@ public enum Pages: String {
     case Category = "category"
     
     static let all = [Photos, Search, Category]
-    //static var current = Pages.Search
     
     static func rawValueFrom(hashValue: Int) ->  String? {
-        //print("hashValue \(hashValue) = current \(current.hashValue)")
         if hashValue < 0 || hashValue >= all.count { return nil }
         for page in Pages.all {
             if page.hashValue == hashValue {
-                //current = page
                 print(page.rawValue)
                 return page.rawValue
             }
@@ -30,7 +27,7 @@ public enum Pages: String {
     }
 }
 
-struct PageViewModel {
+struct PageCoordinator, UIPageViewControllerDelegate,  UIPageViewControllerDataSource {
     
     func indexOfViewControllerWith(_ identifier: String?) -> Int {
         

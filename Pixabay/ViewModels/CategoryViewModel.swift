@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-struct CategoryViewModel {
+struct CategoryViewModel: ViewModel {
     let size = PhotosCategory.list.count
     var cellSize = CGSize(width: 100, height: 100)
     
@@ -29,8 +29,15 @@ struct CategoryViewModel {
     var images: [String] = {
         return PhotosCategory.list.map{ $0.rawValue }.sorted()
     }()
-
-    func loadPhotos(for category: String ) {
+    
+    func selectedCategory(for indexPath:IndexPath) -> PhotosCategory? {
+        if labels.count > indexPath.item {
+            print(labels[indexPath.item])
+            let category =  PhotosCategory.list.filter {$0.rawValue.capitalized == labels[indexPath.item]}
+            return category.first
+        }
         
+        return nil
     }
+
 }

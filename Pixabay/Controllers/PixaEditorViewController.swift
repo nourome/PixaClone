@@ -1,5 +1,5 @@
 //
-//  PixaCollectionViewController.swift
+//  PixaEditorViewController.swift
 //  Pixabay
 //
 //  Created by Nour on 28/05/2018.
@@ -12,32 +12,42 @@ import RxSwift
 import Kingfisher
 
 
-class PixaCollectionViewController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
-    var viewModel: CollectionViewModel!
+class PixaEditorViewController: UICollectionViewController, UICollectionViewDataSourcePrefetching {
+    var viewModel = CollectionViewModel()
     var collectionViewDelegate: PixaCollectionViewDelegate!
     let disposeBag = DisposeBag()
     var stopPrefetching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView?.collectionViewLayout = UICollectionViewEdgeLayout()
-        viewModel = CollectionViewModel(collectionView: collectionView, type: .Editor, data: nil)
+        print(viewModel)
+        //viewModel = CollectionViewModel(collectionView: collectionView, type: .Editor, data: nil)
         collectionViewDelegate = PixaCollectionViewDelegate(viewModel: viewModel)
         collectionView?.delegate = collectionViewDelegate
         collectionView?.dataSource = collectionViewDelegate
         collectionView?.prefetchDataSource = self
+        collectionView?.collectionViewLayout = UICollectionViewEdgeLayout()
         (collectionView?.collectionViewLayout as? UICollectionViewEdgeLayout)?.cellSizerDelegate = viewModel
-        loadPhotosAsync()
+       
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+         loadPhotosAsync()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
     
     func loadPhotosAsync() {
         viewModel.loadPhotos().observeOn(MainScheduler.instance).subscribe(onNext: { status in
             switch status {
             case .Start:
                 self.collectionView?.reloadData()
+                break
             case .Cached:
                 self.collectionView?.insertItems(at: self.viewModel.loadedItems)
                   self.stopPrefetching = false
@@ -66,11 +76,7 @@ class PixaCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        collectionViewLayout.invalidateLayout()
-        
-    }
+   
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

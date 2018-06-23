@@ -13,11 +13,11 @@ import AVFoundation
 import Kingfisher
 
 
-class CollectionViewModel {
+class CollectionViewModel:ViewModel {
     
     var model: PixaCollectionModelProtocol!
     var requestParameters:[PixaBayAPI.Keys: String] = [:]
-    var collectionView: UICollectionView?
+    //var collectionView: UICollectionView?
     var collectionViewWidth: CGFloat = 375.0
     var previewWidth: CGFloat = 150.0
     var previewHeight: CGFloat = 84.0
@@ -25,6 +25,9 @@ class CollectionViewModel {
     var photos:[PixaPhotoModel] = []
     let disposeBag = DisposeBag()
     private var _pageNumber = 0
+    
+    var collectionView: UICollectionView?
+    var segueData: Data?
     
     var loadedItems:[IndexPath] {
         get {
@@ -67,10 +70,11 @@ class CollectionViewModel {
         }
     }
     
+/*
     init(collectionView: UICollectionView?, type: CollectionType, data: Any?) {
         self.collectionView = collectionView
         self.collectionViewWidth = collectionView?.bounds.width ?? UIScreen.main.bounds.width
-        print(self.collectionViewWidth)
+
         switch type {
         case .Editor:
             model = EditorCollectionModel()
@@ -82,10 +86,12 @@ class CollectionViewModel {
         requestParameters = model.parameters
         
     }
-    
+    */
     func loadPhotos(latest: Bool = false)-> Observable<ResponseStatus> {
         return Observable<ResponseStatus>.create { observer  in
+            print(self.requestParameters)
             self.pageNumber += 1
+             print(self.requestParameters)
             do {
                 let url =  try PixaBayAPI.buildRequestURL(with: self.requestParameters, latest: latest)
                 if let cached = RealmService.cache(for: url) {

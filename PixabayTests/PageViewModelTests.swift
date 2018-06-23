@@ -10,10 +10,10 @@ import XCTest
 @testable import Pixabay
 
 class PageViewModelTests: XCTestCase {
-    var viewModel: PageViewModel!
+    var viewModel: PageCoordinator!
     override func setUp() {
         super.setUp()
-        viewModel = PageViewModel()
+        viewModel = PageCoordinator()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     

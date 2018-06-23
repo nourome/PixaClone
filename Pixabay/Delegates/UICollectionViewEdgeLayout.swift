@@ -14,12 +14,14 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
     
     var cache: [IndexPath:UICollectionViewLayoutAttributes] = [:]
     var cellSizerDelegate : CellSizerDelegate?
-    let  defaultCellSize =  CGSize(width: 150, height: 150)
+    let  defaultSize =  CGSize(width: 150, height: 150)
+    var onLoad = true
     override init() {
         super.init()
         self.sectionHeadersPinToVisibleBounds = true
         self.minimumInteritemSpacing = 3.0
         self.minimumLineSpacing = 3.0
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,8 +29,7 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
     }
     
     override func prepare() {
-        
-        let defaultSize =  CGSize(width: 150, height: 150)
+        super.prepare()
         var first = true
         if let items = collectionView?.numberOfItems(inSection: 0) {
             for item in 0..<items {
@@ -36,8 +37,9 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
                 if !cache.keys.contains(indexPath) {
                     let attrs = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                     if item == 0 {
+                        let headerHeight = 50.0 + minimumLineSpacing
                         let cellSize = cellSizerDelegate?.sizeForCell(with: indexPath) ?? defaultSize
-                        attrs.frame = CGRect(x: 0, y: 0, width: cellSize.width, height: cellSize.height)
+                        attrs.frame = CGRect(x: 0, y: headerHeight, width: cellSize.width, height: cellSize.height)
                         first = !first
                     }else {
                         let previousIndexPath = IndexPath(item: indexPath.item-1, section: 0)
@@ -74,7 +76,17 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
     
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        var layoutAttributes =  [UICollectionViewLayoutAttributes]()
+          var layoutAttributes =  [UICollectionViewLayoutAttributes]()
+        
+        if onLoad {
+            onLoad = false
+            let attrs = super.layoutAttributesForElements(in: rect)!
+            let supplementaryAttrs = attrs.filter {$0.representedElementCategory == .supplementaryView}
+            if !supplementaryAttrs.isEmpty {
+                  layoutAttributes.append(contentsOf: supplementaryAttrs)
+            }
+        }
+      
         let cachedAttributes = cache.flatMap { attrs ->  [UICollectionViewLayoutAttributes] in
             return [attrs.value]
             }.filter{rect.intersects($0.frame)}

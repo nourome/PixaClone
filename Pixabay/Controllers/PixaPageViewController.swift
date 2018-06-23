@@ -8,23 +8,18 @@
 
 import UIKit
 
-class PixaPageViewController: UIPageViewController, UIPageViewControllerDelegate,  UIPageViewControllerDataSource {
+class PixaPageViewController: UIPageViewController {
     
-    var viewModel: PageViewModel!
+    var pageCoordinator: PageCoordinator?
     var pageControl: UIPageControl!
     var currentPage: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        self.delegate = self
-        viewModel = PageViewModel()
+        pageCoordinator = PageCoordinator(pageViewController: self)
+        self.dataSource = pageCoordinator
+        self.delegate = pageCoordinator
         addPageControl()
-        
-        let firstPage = storyboard?.instantiateViewController(withIdentifier: Pages.Search.rawValue)
-        setViewControllers([firstPage!], direction: .forward, animated: false, completion: nil)
-        
-       
         // Do any additional setup after loading the view.
     }
     
@@ -42,44 +37,6 @@ class PixaPageViewController: UIPageViewController, UIPageViewControllerDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("before called)")
-        
-        if let nextIdentifier = viewModel.viewControllerNextTo(identifier: viewController.restorationIdentifier, nextId: -) {
-            return storyboard?.instantiateViewController(withIdentifier: nextIdentifier)
-        }
-        
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        print("after called \(viewController)")
-        if let nextIdentifier = viewModel.viewControllerNextTo(identifier: viewController.restorationIdentifier, nextId: +) {
-            return storyboard?.instantiateViewController(withIdentifier: nextIdentifier)
-        }
-        
-        return nil
-    }
-    
-    
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        
-        if let nextViewController = pendingViewControllers.first {
-            currentPage = viewModel.indexOfViewControllerWith(nextViewController.restorationIdentifier)
-        }
-       
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
-        pageControl.currentPage = currentPage
-    }
-    
-    
-    
     
     /*
      // MARK: - Navigation

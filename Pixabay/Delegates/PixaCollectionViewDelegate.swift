@@ -45,7 +45,7 @@ class PixaCollectionViewDelegate: NSObject, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 50.0)
+        return CGSize(width: collectionView.frame.width, height: 70.0)
     }
 }
 

@@ -20,8 +20,6 @@ class PixaEditorViewController: UICollectionViewController, UICollectionViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(viewModel)
-        //viewModel = CollectionViewModel(collectionView: collectionView, type: .Editor, data: nil)
         collectionViewDelegate = PixaCollectionViewDelegate(viewModel: viewModel)
         collectionView?.delegate = collectionViewDelegate
         collectionView?.dataSource = collectionViewDelegate

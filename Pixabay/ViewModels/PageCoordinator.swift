@@ -53,17 +53,15 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
     var pageViewController: UIPageViewController!
     var currentPageId: Int = 1
     
-    init(pageViewController: UIPageViewController ){
-        
-        self.pageViewController = pageViewController
+    override init(){
+        super.init()
+        self.pageViewController = (UIApplication.shared.delegate as? AppDelegate)!.window!.rootViewController as! UIPageViewController
        
         let firstPage = pageViewController.storyboard?.instantiateViewController(withIdentifier: Pages.Search.rawValue)
+        (firstPage as? PixaSearchViewController)?.delegate = self
+        
         pageViewController.setViewControllers([firstPage!], direction: .forward, animated: false, completion: nil)
        
-    }
-    
-    deinit {
-        print("dies?")
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -95,15 +93,12 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
         
         if let nextIdentifier = viewControllerNextTo(identifier: viewController.restorationIdentifier, nextId: +) {
             return pageViewController.storyboard?.instantiateViewController(with: nextIdentifier, delegate: self)
-            
-           // return viewController
         }
         
         return nil
     }
     
     func indexOfViewControllerWith(_ identifier: String?) -> Int {
-        
         if identifier == nil { return NSNotFound }
         
         for page in Pages.all {
@@ -114,17 +109,7 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
         
         return NSNotFound
     }
-    /*
-    func viewControllerNextTo(identifier: String?, nextId:(Int, Int)-> Int) -> String?  {
-        
-        let indexOfVisibleViewController = self.indexOfViewControllerWith(identifier)
-        
-        if  indexOfVisibleViewController < 0  || indexOfVisibleViewController == NSNotFound
-        { return nil }
-        
-        return Pages.rawValueFrom(hashValue: nextId(indexOfVisibleViewController, 1))
-    }
-    */
+    
     func viewControllerNextTo(identifier: String?, nextId:(Int, Int)-> Int) -> Pages?  {
         
         let indexOfVisibleViewController = self.indexOfViewControllerWith(identifier)
@@ -140,10 +125,17 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
 
 extension PageCoordinator: CategoryDelegate {
     func didSelect(_ category: PhotosCategory) {
-        print("hello delegate?")
-        let navigationController = pageViewController.storyboard?.instantiateNavigatorViewController(for: category)
-       self.pageViewController.present(navigationController!, animated: true, completion: nil)
+        let viewController = pageViewController.storyboard?.instantiateCollectionViewController(for: category)
+       self.pageViewController.present(viewController!, animated: true, completion: nil)
         
+    }
+}
+
+extension PageCoordinator: SearchDelegate {
+    func didSearchStarted(with keyword: String) {
+        
+        let viewController = pageViewController.storyboard?.instantiateSearchResultsViewController(for: keyword)
+        self.pageViewController.present(viewController!, animated: true, completion: nil)
     }
     
     
@@ -177,7 +169,6 @@ extension UIStoryboard {
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = EditorCollectionModel()
         viewController.viewModel.model.data = nil
-        viewController.viewModel.requestParameters = viewController.viewModel.model.parameters
         
         return viewController
     }
@@ -188,13 +179,22 @@ extension UIStoryboard {
         return viewController
     }
     
-    func instantiateNavigatorViewController(for category: PhotosCategory)-> PixalCategoryPhotosViewController {
+    func instantiateCollectionViewController(for category: PhotosCategory)-> PixalCategoryPhotosViewController {
          let viewController = instantiateViewController(withIdentifier: "category_collection") as! PixalCategoryPhotosViewController
         
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = CategoryCollectionModel()
         viewController.viewModel.model.data = category
-        viewController.viewModel.requestParameters = viewController.viewModel.model.parameters
+        
+        return viewController
+    }
+    
+    func instantiateSearchResultsViewController(for keyword: String)-> PixalCategoryPhotosViewController {
+        let viewController = instantiateViewController(withIdentifier: "category_collection") as! PixalCategoryPhotosViewController
+        
+        viewController.viewModel.collectionView = viewController.collectionView
+        viewController.viewModel.model = SearchCollectionModel()
+        viewController.viewModel.model.data = keyword
         
         return viewController
     }

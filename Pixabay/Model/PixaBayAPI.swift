@@ -37,7 +37,6 @@ struct PixaBayAPI {
     
     
     static func buildRequestURL(with parameters: [Keys:String], latest: Bool = false) throws -> URL {
-        print(parameters)
         guard let requestUrl = URL(string: api), var requestComponents = URLComponents(url: requestUrl, resolvingAgainstBaseURL: true) else {
             throw PixaApiError.WrongUrl("Wrong URL parameters")
         }

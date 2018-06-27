@@ -45,43 +45,50 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="Search free images.." translatesAutoresizingMaskIntoConstraints="NO" id="8vj-dp-fAQ">
-                                <rect key="frame" x="7" y="206.66666666666666" width="361" height="55.999999999999972"/>
+                            <searchBar contentMode="redraw" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="uYI-l6-2e9">
+                                <rect key="frame" x="9" y="204" width="357" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="Sj9-MY-4uk" id="J1X-Ig-KBe"/>
+                                    <outlet property="delegate" destination="Sj9-MY-4uk" id="ktl-cv-0Zm"/>
                                 </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8vj-dp-fAQ" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="7" id="078-sG-zfE"/>
-                            <constraint firstItem="8vj-dp-fAQ" firstAttribute="centerX" secondItem="qCj-dR-7sk" secondAttribute="centerX" id="0Qe-WX-YHm"/>
                             <constraint firstItem="eYg-1O-srU" firstAttribute="centerY" secondItem="pUQ-MK-9ta" secondAttribute="centerY" id="2Nf-AH-DEc"/>
+                            <constraint firstItem="K67-el-bOO" firstAttribute="trailing" secondItem="uYI-l6-2e9" secondAttribute="trailing" constant="9" id="2gF-ng-bvX"/>
+                            <constraint firstItem="uYI-l6-2e9" firstAttribute="top" secondItem="eYg-1O-srU" secondAttribute="bottom" constant="118.33" id="49G-jB-mcq"/>
                             <constraint firstItem="eYg-1O-srU" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="16" id="9fM-MP-pZ7"/>
                             <constraint firstItem="pUQ-MK-9ta" firstAttribute="top" secondItem="K67-el-bOO" secondAttribute="top" constant="6" id="Lb6-Y1-Cbd"/>
-                            <constraint firstItem="K67-el-bOO" firstAttribute="trailing" secondItem="8vj-dp-fAQ" secondAttribute="trailing" constant="7" id="Q5i-id-QfN"/>
                             <constraint firstAttribute="bottom" secondItem="fW9-9C-FLW" secondAttribute="bottom" id="RjB-HX-hXq"/>
                             <constraint firstItem="K67-el-bOO" firstAttribute="trailing" secondItem="pUQ-MK-9ta" secondAttribute="trailing" constant="16" id="S4c-VW-D3g"/>
-                            <constraint firstItem="8vj-dp-fAQ" firstAttribute="top" secondItem="eYg-1O-srU" secondAttribute="bottom" constant="121" id="SvL-nC-S9a"/>
                             <constraint firstItem="fW9-9C-FLW" firstAttribute="trailing" secondItem="K67-el-bOO" secondAttribute="trailing" id="W18-b1-Z4A"/>
                             <constraint firstItem="fW9-9C-FLW" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" id="ech-uR-9mB"/>
+                            <constraint firstItem="uYI-l6-2e9" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="9" id="iMt-e2-Y97"/>
                             <constraint firstItem="fW9-9C-FLW" firstAttribute="top" secondItem="qCj-dR-7sk" secondAttribute="top" id="jPh-Ks-YaV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K67-el-bOO"/>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="uxw-3x-ZGE" id="pIx-IK-pKN"/>
+                        <outlet property="searchBar" destination="uYI-l6-2e9" id="QDA-BZ-SMC"/>
+                        <outlet property="searchDisplayController" destination="qdc-kx-lGE" id="om7-zs-eKC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hk0-7R-fQj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="uxw-3x-ZGE">
                     <connections>
                         <outlet property="delegate" destination="Sj9-MY-4uk" id="cd7-q4-agT"/>
-                        <outlet property="searchBar" destination="8vj-dp-fAQ" id="NnF-36-ju4"/>
                         <outlet property="searchContentsController" destination="Sj9-MY-4uk" id="oWb-H6-e89"/>
                         <outlet property="searchResultsDataSource" destination="Sj9-MY-4uk" id="GlH-gn-YDV"/>
                         <outlet property="searchResultsDelegate" destination="Sj9-MY-4uk" id="JsO-k0-0Ae"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="qdc-kx-lGE">
+                    <connections>
+                        <outlet property="delegate" destination="Sj9-MY-4uk" id="hRc-4g-e03"/>
+                        <outlet property="searchContentsController" destination="Sj9-MY-4uk" id="kI6-lC-IeV"/>
+                        <outlet property="searchResultsDataSource" destination="Sj9-MY-4uk" id="f4W-mV-RpK"/>
+                        <outlet property="searchResultsDelegate" destination="Sj9-MY-4uk" id="Kub-AQ-6jm"/>
                     </connections>
                 </searchDisplayController>
             </objects>

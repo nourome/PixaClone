@@ -12,12 +12,13 @@
 		140BF72B20BBDC74002A55E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140BF72920BBDC74002A55E3 /* Main.storyboard */; };
 		140BF73020BBDC76002A55E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140BF72E20BBDC76002A55E3 /* LaunchScreen.storyboard */; };
 		140BF73B20BBDC76002A55E3 /* PixabayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140BF73A20BBDC76002A55E3 /* PixabayTests.swift */; };
-		140BF74620BBDF7B002A55E3 /* PixaSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140BF74520BBDF7B002A55E3 /* PixaSearchViewController.swift */; };
 		140BF74820BBF267002A55E3 /* PixaEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140BF74720BBF267002A55E3 /* PixaEditorViewController.swift */; };
 		140BF74C20BC1DFD002A55E3 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140BF74B20BC1DFD002A55E3 /* CollectionViewModel.swift */; };
-		1436CA9520DE41EB008F9E6A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CA9420DE41EB008F9E6A /* Coordinator.swift */; };
 		1436CA9720DE96CC008F9E6A /* PixaDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CA9620DE96CC008F9E6A /* PixaDelegate.swift */; };
 		1436CA9920DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CA9820DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift */; };
+		1436CA9B20DF86DD008F9E6A /* PixaSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CA9A20DF86DD008F9E6A /* PixaSearchViewController.swift */; };
+		1436CA9D20E279C4008F9E6A /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = 1436CA9C20E279C4008F9E6A /* response.json */; };
+		1436CAA220E27C68008F9E6A /* CollectionModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1436CAA120E27C68008F9E6A /* CollectionModelTest.swift */; };
 		1455564620BC5E19007B71A6 /* PixaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455564520BC5E19007B71A6 /* PixaViewCell.swift */; };
 		1455568620BD346A007B71A6 /* PixaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455568520BD346A007B71A6 /* PixaModel.swift */; };
 		1455568820BD3AFF007B71A6 /* PixaBayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455568720BD3AFF007B71A6 /* PixaBayAPI.swift */; };
@@ -32,7 +33,7 @@
 		14811EA320BFEC320047EB81 /* PixaPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EA220BFEC320047EB81 /* PixaPageViewController.swift */; };
 		14811EA520BFECE60047EB81 /* PixaGategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EA420BFECE60047EB81 /* PixaGategoriesViewController.swift */; };
 		14811EE620C01FA40047EB81 /* PageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EE520C01FA40047EB81 /* PageCoordinator.swift */; };
-		14811EE820C026840047EB81 /* PageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EE720C026840047EB81 /* PageViewModelTests.swift */; };
+		14811EE820C026840047EB81 /* PageCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EE720C026840047EB81 /* PageCoordinatorTests.swift */; };
 		14811EEE20C3B9E30047EB81 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EED20C3B9E30047EB81 /* CategoryViewCell.swift */; };
 		14811EF220C3BF090047EB81 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF120C3BF090047EB81 /* CategoryViewModel.swift */; };
 		14811EF420C3D0B60047EB81 /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */; };
@@ -62,12 +63,13 @@
 		140BF73620BBDC76002A55E3 /* PixabayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixabayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		140BF73A20BBDC76002A55E3 /* PixabayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayTests.swift; sourceTree = "<group>"; };
 		140BF73C20BBDC76002A55E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		140BF74520BBDF7B002A55E3 /* PixaSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaSearchViewController.swift; sourceTree = "<group>"; };
 		140BF74720BBF267002A55E3 /* PixaEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaEditorViewController.swift; sourceTree = "<group>"; };
 		140BF74B20BC1DFD002A55E3 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
-		1436CA9420DE41EB008F9E6A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1436CA9620DE96CC008F9E6A /* PixaDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaDelegate.swift; sourceTree = "<group>"; };
 		1436CA9820DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixalCategoryPhotosViewController.swift; sourceTree = "<group>"; };
+		1436CA9A20DF86DD008F9E6A /* PixaSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaSearchViewController.swift; sourceTree = "<group>"; };
+		1436CA9C20E279C4008F9E6A /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
+		1436CAA120E27C68008F9E6A /* CollectionModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionModelTest.swift; sourceTree = "<group>"; };
 		1455564520BC5E19007B71A6 /* PixaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaViewCell.swift; sourceTree = "<group>"; };
 		1455568520BD346A007B71A6 /* PixaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaModel.swift; sourceTree = "<group>"; };
 		1455568720BD3AFF007B71A6 /* PixaBayAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaBayAPI.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		14811EA220BFEC320047EB81 /* PixaPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaPageViewController.swift; sourceTree = "<group>"; };
 		14811EA420BFECE60047EB81 /* PixaGategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaGategoriesViewController.swift; sourceTree = "<group>"; };
 		14811EE520C01FA40047EB81 /* PageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCoordinator.swift; sourceTree = "<group>"; };
-		14811EE720C026840047EB81 /* PageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewModelTests.swift; sourceTree = "<group>"; };
+		14811EE720C026840047EB81 /* PageCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCoordinatorTests.swift; sourceTree = "<group>"; };
 		14811EED20C3B9E30047EB81 /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		14811EF120C3BF090047EB81 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 		140BF71520BBDC73002A55E3 = {
 			isa = PBXGroup;
 			children = (
-				145DB12F20D63F88006D043D /* transparent.png */,
+				1436CA9E20E279CB008F9E6A /* bundled */,
 				140BF72020BBDC73002A55E3 /* Pixabay */,
 				140BF73920BBDC76002A55E3 /* PixabayTests */,
 				140BF71F20BBDC73002A55E3 /* Products */,
@@ -160,12 +162,22 @@
 				140BF73A20BBDC76002A55E3 /* PixabayTests.swift */,
 				140BF73C20BBDC76002A55E3 /* Info.plist */,
 				1455568920BD4A58007B71A6 /* PixaBayAPITests.swift */,
-				14811EE720C026840047EB81 /* PageViewModelTests.swift */,
+				14811EE720C026840047EB81 /* PageCoordinatorTests.swift */,
 				14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */,
 				145DB12B20D6362C006D043D /* CollectionViewModelTest.swift */,
 				1469C90020D6D44F009A3E95 /* RealmServiceTest.swift */,
+				1436CAA120E27C68008F9E6A /* CollectionModelTest.swift */,
 			);
 			path = PixabayTests;
+			sourceTree = "<group>";
+		};
+		1436CA9E20E279CB008F9E6A /* bundled */ = {
+			isa = PBXGroup;
+			children = (
+				145DB12F20D63F88006D043D /* transparent.png */,
+				1436CA9C20E279C4008F9E6A /* response.json */,
+			);
+			name = bundled;
 			sourceTree = "<group>";
 		};
 		1469C8FB20D68E4C009A3E95 /* Realm */ = {
@@ -190,11 +202,11 @@
 		14811EE920C273820047EB81 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				140BF74520BBDF7B002A55E3 /* PixaSearchViewController.swift */,
 				140BF74720BBF267002A55E3 /* PixaEditorViewController.swift */,
 				14811EA220BFEC320047EB81 /* PixaPageViewController.swift */,
 				14811EA420BFECE60047EB81 /* PixaGategoriesViewController.swift */,
 				1436CA9820DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift */,
+				1436CA9A20DF86DD008F9E6A /* PixaSearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -235,7 +247,6 @@
 				14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */,
 				14BA559320D2450A003BD7EC /* UICollectionViewEdgeLayout.swift */,
 				1409121520DA47A0004634EB /* CellSizerDelegate.swift */,
-				1436CA9420DE41EB008F9E6A /* Coordinator.swift */,
 				1436CA9620DE96CC008F9E6A /* PixaDelegate.swift */,
 			);
 			path = Delegates;
@@ -359,6 +370,7 @@
 				145DB13020D63F89006D043D /* transparent.png in Resources */,
 				140BF73020BBDC76002A55E3 /* LaunchScreen.storyboard in Resources */,
 				145DB12E20D63D07006D043D /* Assets.xcassets in Resources */,
+				1436CA9D20E279C4008F9E6A /* response.json in Resources */,
 				140BF72B20BBDC74002A55E3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,12 +506,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1436CA9B20DF86DD008F9E6A /* PixaSearchViewController.swift in Sources */,
 				14811EEE20C3B9E30047EB81 /* CategoryViewCell.swift in Sources */,
 				1455564620BC5E19007B71A6 /* PixaViewCell.swift in Sources */,
 				1436CA9720DE96CC008F9E6A /* PixaDelegate.swift in Sources */,
 				140BF74C20BC1DFD002A55E3 /* CollectionViewModel.swift in Sources */,
 				1469C90320D78175009A3E95 /* CollectionModel.swift in Sources */,
-				140BF74620BBDF7B002A55E3 /* PixaSearchViewController.swift in Sources */,
 				14811EF220C3BF090047EB81 /* CategoryViewModel.swift in Sources */,
 				14BA559420D2450A003BD7EC /* UICollectionViewEdgeLayout.swift in Sources */,
 				140BF74820BBF267002A55E3 /* PixaEditorViewController.swift in Sources */,
@@ -514,7 +526,6 @@
 				1409121620DA47A0004634EB /* CellSizerDelegate.swift in Sources */,
 				1455568620BD346A007B71A6 /* PixaModel.swift in Sources */,
 				1436CA9920DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift in Sources */,
-				1436CA9520DE41EB008F9E6A /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,9 +534,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14811EF420C3D0B60047EB81 /* CategoryViewModelTest.swift in Sources */,
-				14811EE820C026840047EB81 /* PageViewModelTests.swift in Sources */,
+				14811EE820C026840047EB81 /* PageCoordinatorTests.swift in Sources */,
 				140BF73B20BBDC76002A55E3 /* PixabayTests.swift in Sources */,
 				1469C90120D6D44F009A3E95 /* RealmServiceTest.swift in Sources */,
+				1436CAA220E27C68008F9E6A /* CollectionModelTest.swift in Sources */,
 				1455568A20BD4A58007B71A6 /* PixaBayAPITests.swift in Sources */,
 				145DB12C20D6362C006D043D /* CollectionViewModelTest.swift in Sources */,
 			);

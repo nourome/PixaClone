@@ -183,6 +183,32 @@ class PixaBayAPITests: XCTestCase {
       
     }
     
+    func testIsValidResponse(){
+        let httpErrorUrlResponse = HTTPURLResponse(url: URL(fileURLWithPath: "transparent"), statusCode: 400, httpVersion: nil, headerFields: nil)
+    
+        let data: Data = "input".data(using: .utf8)!
+        let responseError: (HTTPURLResponse, Data) = (httpErrorUrlResponse!, data)
+        
+         XCTAssertThrowsError(try PixaBayAPI.isValid(response: responseError))
+        
+        let httpOkUrlResponse = HTTPURLResponse(url: URL(fileURLWithPath: "transparent"), statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        let responseOk: (HTTPURLResponse, Data) = (httpOkUrlResponse!, data)
+    
+        XCTAssertTrue(try! PixaBayAPI.isValid(response: responseOk))
+
+    }
+    
+    func testDecodeResponse() {
+        let responseFileUrl = Bundle.main.url(forResource: "response", withExtension: "json")
+        
+        let responseData = try! Data(contentsOf: responseFileUrl!)
+        
+       let photoModels =  try! PixaBayAPI.decode(response: responseData)
+        
+        XCTAssertEqual(photoModels.first!.id, 3489394)
+        
+    }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

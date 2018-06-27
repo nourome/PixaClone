@@ -27,7 +27,7 @@ class PageViewModelTests: XCTestCase {
             return current + next
         }
         
-        XCTAssertEqual(identifier, "category")
+        XCTAssertEqual(identifier, Pages.Category)
         
         identifier = viewModel.viewControllerNextTo(identifier: "category") { (current, next) -> Int in
             return current + next
@@ -40,7 +40,7 @@ class PageViewModelTests: XCTestCase {
             return current - next
         }
         
-        XCTAssertEqual(identifier, "photos")
+        XCTAssertEqual(identifier, Pages.Editor)
         
         identifier = viewModel.viewControllerNextTo(identifier: "photos") { (current, next) -> Int in
             return current - next
@@ -52,7 +52,7 @@ class PageViewModelTests: XCTestCase {
             return current - next
         }
         
-        XCTAssertEqual(identifier, "photos")
+        XCTAssertEqual(identifier, Pages.Editor)
         
     }
     
@@ -60,7 +60,7 @@ class PageViewModelTests: XCTestCase {
         var index = viewModel.indexOfViewControllerWith("search")
         XCTAssertEqual(index, 1)
         
-        index = viewModel.indexOfViewControllerWith("photos")
+        index = viewModel.indexOfViewControllerWith("editor")
         XCTAssertEqual(index, 0)
         
         index = viewModel.indexOfViewControllerWith("category")

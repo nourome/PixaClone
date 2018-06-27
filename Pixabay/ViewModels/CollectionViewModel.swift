@@ -14,20 +14,13 @@ import Kingfisher
 
 
 class CollectionViewModel:ViewModel {
-    
+    var collectionView: UICollectionView?
     var model: PixaCollectionModelProtocol!
-    var requestParameters:[PixaBayAPI.Keys: String] = [:]
-    //var collectionView: UICollectionView?
     var collectionViewWidth: CGFloat = 375.0
-    var previewWidth: CGFloat = 150.0
-    var previewHeight: CGFloat = 84.0
-    var imageSize = CGSize(width: 150.0, height: 84.0)
     var photos:[PixaPhotoModel] = []
     let disposeBag = DisposeBag()
     private var _pageNumber = 0
     
-    var collectionView: UICollectionView?
-    var segueData: Data?
     
     var loadedItems:[IndexPath] {
         get {
@@ -60,47 +53,33 @@ class CollectionViewModel:ViewModel {
             }
         }
     }
+    
     var pageNumber: Int {
         get {
             return _pageNumber
         }
         set(page) {
             _pageNumber = page
-            requestParameters[.page] = String(page)
+            model.parameters[.page] = String(page)
         }
     }
     
-/*
-    init(collectionView: UICollectionView?, type: CollectionType, data: Any?) {
-        self.collectionView = collectionView
-        self.collectionViewWidth = collectionView?.bounds.width ?? UIScreen.main.bounds.width
-
-        switch type {
-        case .Editor:
-            model = EditorCollectionModel()
-        default:
-            break
-        }
-        
-        model.data = data
-        requestParameters = model.parameters
-        
-    }
-    */
     func loadPhotos(latest: Bool = false)-> Observable<ResponseStatus> {
         return Observable<ResponseStatus>.create { observer  in
-            print(self.requestParameters)
             self.pageNumber += 1
-             print(self.requestParameters)
+            print(self.model.parameters)
             do {
-                let url =  try PixaBayAPI.buildRequestURL(with: self.requestParameters, latest: latest)
+                let url =  try PixaBayAPI.buildRequestURL(with: self.model.parameters, latest: latest)
+                print("url ===> \(url.absoluteString)")
                 if let cached = RealmService.cache(for: url) {
                     let hits =  try PixaBayAPI.decode(response: cached)
                     self.photos.append(contentsOf: hits)
                     if self.photos.count <= PixaBayAPI.MaxFetchPerPage {
                         observer.onNext(.Start)
+                        observer.onCompleted()
                     }else {
                         observer.onNext(.Cached)
+                        observer.onCompleted()
                         ImagePrefetcher.init(urls: self.loadedItemsUrl).start()
                     }
                 } else {
@@ -154,7 +133,7 @@ class CollectionViewModel:ViewModel {
 extension CollectionViewModel: CellSizerDelegate {
     
     func sizeForCell(with indexPath: IndexPath) -> CGSize {
-        var size = CGSize(width: 0, height: 0)
+        var size = CGSize(width: 1500, height: 150)
         if photos.count > indexPath.item {
             let photoItem = photos[indexPath.item]
             

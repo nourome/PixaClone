@@ -32,7 +32,6 @@ struct CategoryViewModel: ViewModel {
     
     func selectedCategory(for indexPath:IndexPath) -> PhotosCategory? {
         if labels.count > indexPath.item {
-            print(labels[indexPath.item])
             let category =  PhotosCategory.list.filter {$0.rawValue.capitalized == labels[indexPath.item]}
             return category.first
         }

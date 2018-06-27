@@ -73,8 +73,6 @@ struct PixaResponse: Decodable {
     let hits: [PixaPhotoModel]?
 }
 
-
-
 struct PixaPhotoModel: Decodable {
     let id: Int
     let tags: String?

@@ -36,7 +36,7 @@ class RealmServiceTest: XCTestCase {
         do {
             let url = try PixaBayAPI.buildRequestURL(with: parameters)
             let jsonResponse = "{\"totalHits\": \"500\"}".data(using: .utf8)!
-            try! RealmService.save(for: url, with: jsonResponse)
+            RealmService.save(for: url, with: jsonResponse)
             
             let realm = try! Realm()
             let savedRecord =  realm.objects(ApiResponse.self).first!

@@ -20,7 +20,10 @@ class CollectionViewModelTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewModel = CollectionViewModel(collectionView: nil, type: .Editor, data: nil)
+        //viewModel = CollectionViewModel(collectionView: nil, type: .Editor, data: nil)
+        viewModel = CollectionViewModel()
+        viewModel.model = EditorCollectionModel()
+        viewModel.model.data = nil
         scheduler = ConcurrentDispatchQueueScheduler.init(qos: .default)
     }
     
@@ -29,37 +32,33 @@ class CollectionViewModelTest: XCTestCase {
         super.tearDown()
     }
     
-    func testCreateDummyPhotos() {
-        let dummy = viewModel.insertDummyPhotos()
-        
-        XCTAssertEqual(dummy.count, PixaBayAPI.MaxFetchPerPage)
-        
-        let dummyUrl = Bundle.main.url(forResource: "transparent", withExtension: "png")!
-        XCTAssertEqual(dummy.first!.previewURL, dummyUrl)
-    }
-    
+   
     func testLoadPhotos() {
-        viewModel.pageNumber = 20 //HTTP should pass
+        viewModel.pageNumber = 1 //HTTP should pass
         let observable = viewModel.loadPhotos().subscribeOn(scheduler)
+        var lodedItemsIndexPathes: [IndexPath] = []
+        
+        for x in 0..<PixaBayAPI.MaxFetchPerPage {
+            lodedItemsIndexPathes.append(IndexPath(item: x, section: 0))
+        }
         
         for _ in 0...1 {
         do {
-            let response = observable.toBlocking(timeout: 1.0).materialize()
-            print(response)
+            let response = observable.toBlocking(timeout: 3.0).materialize()
             switch response {
             case .completed(elements: let responses):
-                XCTAssertEqual(responses.count, 2)
-                XCTAssertEqual(responses.first!, ResponseStatus.Dummy)
-                XCTAssertEqual(responses[1], ResponseStatus.Success)
+                XCTAssertEqual(responses.first!, ResponseStatus.Start)
+                XCTAssertEqual(viewModel.loadedItems, lodedItemsIndexPathes)
+                XCTAssertEqual(viewModel.loadedItemsUrl.count, 150)
                 break
             case .failed(elements: let response, error: _):
-                XCTAssertEqual(response[1], ResponseStatus.Failed(PixaApiError.HttpResponseError("error")))
+                XCTAssertEqual(response.first!, ResponseStatus.Failed(PixaApiError.HttpResponseError("error")))
                 break
             }
         }
-             viewModel.pageNumber = 0 //-> HTTP response error
+             viewModel.pageNumber = -1 //-> HTTP response error
         
-        }
+       }
        
     }
     

@@ -125,7 +125,7 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
 
 extension PageCoordinator: CategoryDelegate {
     func didSelect(_ category: PhotosCategory) {
-        let viewController = pageViewController.storyboard?.instantiateCollectionViewController(for: category)
+        let viewController = pageViewController.storyboard?.instantiateCollectionViewController(for: category, with: self)
        self.pageViewController.present(viewController!, animated: true, completion: nil)
         
     }
@@ -141,6 +141,15 @@ extension PageCoordinator: SearchDelegate {
     
 }
 
+extension PageCoordinator: CollectionCellDelegate {
+    func didSelect(photo: PixaPhotoModel) {
+        let viewController = pageViewController.storyboard?.instantiateImageViewerController(for: photo)
+        self.pageViewController.present(viewController!, animated: true, completion: nil)
+    }
+    
+    
+}
+
 extension UIStoryboard {
     
     func instantiateViewController(with pageIdentifier: Pages, delegate: PixaDelegate?) -> UIViewController {
@@ -149,7 +158,7 @@ extension UIStoryboard {
         case Pages.Category:
             return instantiatePixaGategoryViewController(with: delegate)
         case Pages.Editor:
-              return instantiatePixaEditorViewController()
+            return instantiatePixaEditorViewController(with: delegate)
         case Pages.Search:
             return instantiateSearchViewController()
         }
@@ -164,11 +173,12 @@ extension UIStoryboard {
         return viewController
     }
     
-    func instantiatePixaEditorViewController() -> PixaEditorViewController{
+    func instantiatePixaEditorViewController(with delegate: PixaDelegate?) -> PixaEditorViewController{
         let viewController =  instantiateViewController(withIdentifier: "photos") as! PixaEditorViewController
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = EditorCollectionModel()
         viewController.viewModel.model.data = nil
+        viewController.viewModel.collectionCellDelegate = delegate as? CollectionCellDelegate
         
         return viewController
     }
@@ -179,13 +189,13 @@ extension UIStoryboard {
         return viewController
     }
     
-    func instantiateCollectionViewController(for category: PhotosCategory)-> PixalCategoryPhotosViewController {
+    func instantiateCollectionViewController(for category: PhotosCategory, with delegate: PixaDelegate?)-> PixalCategoryPhotosViewController {
          let viewController = instantiateViewController(withIdentifier: "category_collection") as! PixalCategoryPhotosViewController
         
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = CategoryCollectionModel()
         viewController.viewModel.model.data = category
-        
+        viewController.viewModel.collectionCellDelegate = delegate as? CollectionCellDelegate
         return viewController
     }
     
@@ -196,6 +206,12 @@ extension UIStoryboard {
         viewController.viewModel.model = SearchCollectionModel()
         viewController.viewModel.model.data = keyword
         
+        return viewController
+    }
+    
+    func instantiateImageViewerController(for photo: PixaPhotoModel)-> PixaImageViewController {
+        let viewController = instantiateViewController(withIdentifier: "image_viewer") as! PixaImageViewController
+        viewController.viewModel.photo = photo
         return viewController
     }
 }

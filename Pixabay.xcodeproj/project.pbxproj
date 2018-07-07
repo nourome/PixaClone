@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1408B04320EBE79E007831F8 /* ImageViewerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1408B04220EBE79E007831F8 /* ImageViewerModel.swift */; };
 		1409121620DA47A0004634EB /* CellSizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409121520DA47A0004634EB /* CellSizerDelegate.swift */; };
 		140BF72220BBDC73002A55E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140BF72120BBDC73002A55E3 /* AppDelegate.swift */; };
 		140BF72B20BBDC74002A55E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140BF72920BBDC74002A55E3 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		14811EF420C3D0B60047EB81 /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF320C3D0B60047EB81 /* CategoryViewModelTest.swift */; };
 		14811EF720C506170047EB81 /* PixaCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */; };
 		14BA559420D2450A003BD7EC /* UICollectionViewEdgeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BA559320D2450A003BD7EC /* UICollectionViewEdgeLayout.swift */; };
+		14E1C42720EBA81A00BD9634 /* PixaImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1C42620EBA81A00BD9634 /* PixaImageViewController.swift */; };
 		DB993385B57648DC5262BCD3 /* Pods_Pixabay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD484CB576EE8DE3BCD82D7 /* Pods_Pixabay.framework */; };
 		FCF02F9071708FA58CADEE82 /* Pods_PixabayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F9AA352C6EADD004A5A61F1 /* Pods_PixabayTests.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1408B04220EBE79E007831F8 /* ImageViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerModel.swift; sourceTree = "<group>"; };
 		1409121520DA47A0004634EB /* CellSizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizerDelegate.swift; sourceTree = "<group>"; };
 		140BF71E20BBDC73002A55E3 /* Pixabay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixabay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		140BF72120BBDC73002A55E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		14811EF620C506170047EB81 /* PixaCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		14B3D97920D78AFA00D55F68 /* RxTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14BA559320D2450A003BD7EC /* UICollectionViewEdgeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewEdgeLayout.swift; sourceTree = "<group>"; };
+		14E1C42620EBA81A00BD9634 /* PixaImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixaImageViewController.swift; sourceTree = "<group>"; };
 		2DD484CB576EE8DE3BCD82D7 /* Pods_Pixabay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pixabay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC26C0641DB5499C7C9D939 /* Pods-PixabayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PixabayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PixabayTests/Pods-PixabayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F9AA352C6EADD004A5A61F1 /* Pods_PixabayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PixabayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +199,7 @@
 				140BF74B20BC1DFD002A55E3 /* CollectionViewModel.swift */,
 				14811EE520C01FA40047EB81 /* PageCoordinator.swift */,
 				14811EF120C3BF090047EB81 /* CategoryViewModel.swift */,
+				1408B04220EBE79E007831F8 /* ImageViewerModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				14811EA420BFECE60047EB81 /* PixaGategoriesViewController.swift */,
 				1436CA9820DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift */,
 				1436CA9A20DF86DD008F9E6A /* PixaSearchViewController.swift */,
+				14E1C42620EBA81A00BD9634 /* PixaImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				14811EA520BFECE60047EB81 /* PixaGategoriesViewController.swift in Sources */,
 				14811EE620C01FA40047EB81 /* PageCoordinator.swift in Sources */,
 				1455568820BD3AFF007B71A6 /* PixaBayAPI.swift in Sources */,
+				14E1C42720EBA81A00BD9634 /* PixaImageViewController.swift in Sources */,
 				14811EF720C506170047EB81 /* PixaCollectionViewDelegate.swift in Sources */,
 				145DB13220D67A14006D043D /* RealmModel.swift in Sources */,
 				1469C8FD20D68E6F009A3E95 /* RealmService.swift in Sources */,
@@ -526,6 +533,7 @@
 				1409121620DA47A0004634EB /* CellSizerDelegate.swift in Sources */,
 				1455568620BD346A007B71A6 /* PixaModel.swift in Sources */,
 				1436CA9920DE98FD008F9E6A /* PixalCategoryPhotosViewController.swift in Sources */,
+				1408B04320EBE79E007831F8 /* ImageViewerModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,10 +707,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.noro.Pixabay;
+				PRODUCT_BUNDLE_IDENTIFIER = me.noro.pixaclone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -718,10 +726,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.noro.Pixabay;
+				PRODUCT_BUNDLE_IDENTIFIER = me.noro.pixaclone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

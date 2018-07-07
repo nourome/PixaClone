@@ -22,3 +22,7 @@ protocol CategoryDelegate: PixaDelegate {
 protocol SearchDelegate: PixaDelegate {
     func didSearchStarted(with keyword: String)
 }
+
+protocol CollectionCellDelegate: PixaDelegate {
+    func didSelect(photo: PixaPhotoModel)
+}

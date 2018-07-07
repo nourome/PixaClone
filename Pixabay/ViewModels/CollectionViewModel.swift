@@ -20,7 +20,7 @@ class CollectionViewModel:ViewModel {
     var photos:[PixaPhotoModel] = []
     let disposeBag = DisposeBag()
     private var _pageNumber = 0
-    
+    var collectionCellDelegate: CollectionCellDelegate?
     
     var loadedItems:[IndexPath] {
         get {
@@ -62,6 +62,10 @@ class CollectionViewModel:ViewModel {
             _pageNumber = page
             model.parameters[.page] = String(page)
         }
+    }
+    
+    func presentImage(at indexIndex: IndexPath) {
+        collectionCellDelegate?.didSelect(photo: photos[indexIndex.item])
     }
     
     func loadPhotos(latest: Bool = false)-> Observable<ResponseStatus> {

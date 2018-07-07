@@ -62,6 +62,7 @@
                             <constraint firstItem="pUQ-MK-9ta" firstAttribute="top" secondItem="K67-el-bOO" secondAttribute="top" constant="6" id="Lb6-Y1-Cbd"/>
                             <constraint firstAttribute="bottom" secondItem="fW9-9C-FLW" secondAttribute="bottom" id="RjB-HX-hXq"/>
                             <constraint firstItem="K67-el-bOO" firstAttribute="trailing" secondItem="pUQ-MK-9ta" secondAttribute="trailing" constant="16" id="S4c-VW-D3g"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eYg-1O-srU" secondAttribute="trailing" constant="20" symbolic="YES" id="UxS-Vm-bEA"/>
                             <constraint firstItem="fW9-9C-FLW" firstAttribute="trailing" secondItem="K67-el-bOO" secondAttribute="trailing" id="W18-b1-Z4A"/>
                             <constraint firstItem="fW9-9C-FLW" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" id="ech-uR-9mB"/>
                             <constraint firstItem="uYI-l6-2e9" firstAttribute="leading" secondItem="K67-el-bOO" secondAttribute="leading" constant="9" id="iMt-e2-Y97"/>
@@ -93,6 +94,73 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="601" y="-217"/>
+        </scene>
+        <!--Pixa Image View Controller-->
+        <scene sceneID="nAh-Gd-sQG">
+            <objects>
+                <viewController storyboardIdentifier="image_viewer" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A02-Qi-fg6" customClass="PixaImageViewController" customModule="Pixabay" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KiD-Me-Vx9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="VFX-0c-oLN">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gso-Bd-YWe">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="714"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gso-Bd-YWe" secondAttribute="trailing" id="5ob-HO-V3d"/>
+                                    <constraint firstItem="gso-Bd-YWe" firstAttribute="centerX" secondItem="VFX-0c-oLN" secondAttribute="centerX" id="5sv-8n-DxV"/>
+                                    <constraint firstItem="gso-Bd-YWe" firstAttribute="top" secondItem="VFX-0c-oLN" secondAttribute="top" priority="250" constant="10" id="B2y-Um-GhP"/>
+                                    <constraint firstAttribute="bottom" secondItem="gso-Bd-YWe" secondAttribute="bottom" constant="10" id="DdO-Y8-ZBi"/>
+                                    <constraint firstItem="gso-Bd-YWe" firstAttribute="centerY" secondItem="VFX-0c-oLN" secondAttribute="centerY" id="q6T-ZZ-A6R"/>
+                                    <constraint firstItem="gso-Bd-YWe" firstAttribute="leading" secondItem="VFX-0c-oLN" secondAttribute="leading" id="y1n-hk-tEy"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="A02-Qi-fg6" id="tnk-h6-bDH"/>
+                                </connections>
+                            </scrollView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5K-Oh-ju2">
+                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="TeZ-71-XuB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="cQh-fY-qWS"/>
+                                </constraints>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="XaG-mS-4ac">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="bWn-SW-rUC">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="dismissView:" destination="A02-Qi-fg6" id="Zaf-JV-6GJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="VFX-0c-oLN" firstAttribute="trailing" secondItem="Xdd-bZ-Fx1" secondAttribute="trailing" id="0iZ-VB-P4e"/>
+                            <constraint firstItem="VFX-0c-oLN" firstAttribute="leading" secondItem="Xdd-bZ-Fx1" secondAttribute="leading" id="4EL-3U-CCX"/>
+                            <constraint firstItem="J5K-Oh-ju2" firstAttribute="top" secondItem="KiD-Me-Vx9" secondAttribute="top" constant="30" id="OMi-Qf-2US"/>
+                            <constraint firstItem="VFX-0c-oLN" firstAttribute="bottom" secondItem="Xdd-bZ-Fx1" secondAttribute="bottom" id="YhM-Gz-ht2"/>
+                            <constraint firstAttribute="trailing" secondItem="J5K-Oh-ju2" secondAttribute="trailing" id="dH2-qz-Q0c"/>
+                            <constraint firstItem="VFX-0c-oLN" firstAttribute="top" secondItem="Xdd-bZ-Fx1" secondAttribute="top" id="fo8-FZ-ZOh"/>
+                            <constraint firstItem="J5K-Oh-ju2" firstAttribute="leading" secondItem="KiD-Me-Vx9" secondAttribute="leading" id="wlN-ZR-P58"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xdd-bZ-Fx1"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gso-Bd-YWe" id="Hlk-qI-zlT"/>
+                        <outlet property="scrollView" destination="VFX-0c-oLN" id="dej-lA-acZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08P-Kj-W75" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-975.3694581280788"/>
         </scene>
         <!--Pixal Category Photos View Controller-->
         <scene sceneID="CYJ-NS-YTw">

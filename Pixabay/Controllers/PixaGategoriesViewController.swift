@@ -19,7 +19,13 @@ class PixaGategoriesViewController: UICollectionViewController {
         if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
+        
        //viewModel.collectionSize = collectionView?.bounds.size
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +58,7 @@ class PixaGategoriesViewController: UICollectionViewController {
         
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseIdentifiers.Header.rawValue, for: indexPath)
     }
+ 
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

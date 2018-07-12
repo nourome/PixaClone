@@ -55,7 +55,10 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
     
     override init(){
         super.init()
-        self.pageViewController = (UIApplication.shared.delegate as? AppDelegate)!.window!.rootViewController as! UIPageViewController
+        let navigatorController = (UIApplication.shared.delegate as? AppDelegate)!.window!.rootViewController as! UINavigationController
+        
+         self.pageViewController =  navigatorController.childViewControllers.first as! UIPageViewController
+    
        
         let firstPage = pageViewController.storyboard?.instantiateViewController(withIdentifier: Pages.Search.rawValue)
         (firstPage as? PixaSearchViewController)?.delegate = self
@@ -126,7 +129,8 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
 extension PageCoordinator: CategoryDelegate {
     func didSelect(_ category: PhotosCategory) {
         let viewController = pageViewController.storyboard?.instantiateCollectionViewController(for: category, with: self)
-       self.pageViewController.present(viewController!, animated: true, completion: nil)
+    self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
+       //self.pageViewController.present(viewController!, animated: true, completion: nil)
         
     }
 }
@@ -134,8 +138,9 @@ extension PageCoordinator: CategoryDelegate {
 extension PageCoordinator: SearchDelegate {
     func didSearchStarted(with keyword: String) {
         
-        let viewController = pageViewController.storyboard?.instantiateSearchResultsViewController(for: keyword)
-        self.pageViewController.present(viewController!, animated: true, completion: nil)
+        let viewController = pageViewController.storyboard?.instantiateSearchResultsViewController(for: keyword, with: self)
+    self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
+       // self.pageViewController.present(viewController!, animated: true, completion: nil)
     }
     
     
@@ -144,7 +149,8 @@ extension PageCoordinator: SearchDelegate {
 extension PageCoordinator: CollectionCellDelegate {
     func didSelect(photo: PixaPhotoModel) {
         let viewController = pageViewController.storyboard?.instantiateImageViewerController(for: photo)
-        self.pageViewController.present(viewController!, animated: true, completion: nil)
+       // self.pageViewController.present(viewController!, animated: true, completion: nil)
+    self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
     }
     
     
@@ -174,7 +180,7 @@ extension UIStoryboard {
     }
     
     func instantiatePixaEditorViewController(with delegate: PixaDelegate?) -> PixaEditorViewController{
-        let viewController =  instantiateViewController(withIdentifier: "photos") as! PixaEditorViewController
+        let viewController =  instantiateViewController(withIdentifier: "editor") as! PixaEditorViewController
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = EditorCollectionModel()
         viewController.viewModel.model.data = nil
@@ -199,13 +205,13 @@ extension UIStoryboard {
         return viewController
     }
     
-    func instantiateSearchResultsViewController(for keyword: String)-> PixalCategoryPhotosViewController {
+    func instantiateSearchResultsViewController(for keyword: String, with delegate: PixaDelegate?)-> PixalCategoryPhotosViewController {
         let viewController = instantiateViewController(withIdentifier: "category_collection") as! PixalCategoryPhotosViewController
         
         viewController.viewModel.collectionView = viewController.collectionView
         viewController.viewModel.model = SearchCollectionModel()
         viewController.viewModel.model.data = keyword
-        
+        viewController.viewModel.collectionCellDelegate = delegate as? CollectionCellDelegate
         return viewController
     }
     

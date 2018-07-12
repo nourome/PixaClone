@@ -29,6 +29,7 @@ class PixalCategoryPhotosViewController: UICollectionViewController, UICollectio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+         navigationController?.setNavigationBarHidden(false, animated: false)
         loadPhotosAsync()
     }
     

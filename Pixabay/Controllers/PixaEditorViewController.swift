@@ -26,24 +26,23 @@ class PixaEditorViewController: UICollectionViewController, UICollectionViewData
         collectionView?.prefetchDataSource = self
         collectionView?.collectionViewLayout = UICollectionViewEdgeLayout()
         (collectionView?.collectionViewLayout as? UICollectionViewEdgeLayout)?.cellSizerDelegate = viewModel
-       
+      
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         loadPhotosAsync()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        loadPhotosAsync()
     }
+
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-    }
     
     func loadPhotosAsync() {
         viewModel.loadPhotos().observeOn(MainScheduler.instance).subscribe(onNext: { status in
             switch status {
             case .Start:
+                (self.collectionView?.collectionViewLayout as? UICollectionViewEdgeLayout)?.resetLayout()
                 self.collectionView?.reloadData()
                 break
             case .Cached:
@@ -74,8 +73,7 @@ class PixaEditorViewController: UICollectionViewController, UICollectionViewData
         }
     }
     
-   
-    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

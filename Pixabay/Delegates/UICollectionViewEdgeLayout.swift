@@ -65,6 +65,10 @@ class UICollectionViewEdgeLayout: UICollectionViewFlowLayout {
         
     }
     
+    func resetLayout() {
+        onLoad = true
+    }
+    
     func invalidateCells(at indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if cache.keys.contains(indexPath) {

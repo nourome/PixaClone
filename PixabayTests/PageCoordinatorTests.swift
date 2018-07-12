@@ -42,7 +42,7 @@ class PageViewModelTests: XCTestCase {
         
         XCTAssertEqual(identifier, Pages.Editor)
         
-        identifier = viewModel.viewControllerNextTo(identifier: "photos") { (current, next) -> Int in
+        identifier = viewModel.viewControllerNextTo(identifier: "editor") { (current, next) -> Int in
             return current - next
         }
         

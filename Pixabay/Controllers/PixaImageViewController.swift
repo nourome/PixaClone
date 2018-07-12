@@ -23,6 +23,7 @@ class PixaImageViewController: UIViewController, UIScrollViewDelegate {
    @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: false)
         scrollView.maximumZoomScale = 4.0
         scrollView.minimumZoomScale = 1.0
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +43,7 @@ class PixaImageViewController: UIViewController, UIScrollViewDelegate {
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -21,7 +21,7 @@ enum PixaApiError: Error {
 
 struct PixaBayAPI {
     static private let api = "https://pixabay.com/api/"
-    static private let key = "9186145-a30a2be1c35b6d8267cab481e"
+    static private let key = "[Your Key]"
     static let MaxFetchPerPage = 150
     public enum Keys: String {
         case key = "key"

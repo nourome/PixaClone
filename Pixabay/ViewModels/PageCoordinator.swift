@@ -130,7 +130,7 @@ extension PageCoordinator: CategoryDelegate {
     func didSelect(_ category: PhotosCategory) {
         let viewController = pageViewController.storyboard?.instantiateCollectionViewController(for: category, with: self)
     self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
-       //self.pageViewController.present(viewController!, animated: true, completion: nil)
+     
         
     }
 }
@@ -140,7 +140,7 @@ extension PageCoordinator: SearchDelegate {
         
         let viewController = pageViewController.storyboard?.instantiateSearchResultsViewController(for: keyword, with: self)
     self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
-       // self.pageViewController.present(viewController!, animated: true, completion: nil)
+     
     }
     
     
@@ -149,7 +149,6 @@ extension PageCoordinator: SearchDelegate {
 extension PageCoordinator: CollectionCellDelegate {
     func didSelect(photo: PixaPhotoModel) {
         let viewController = pageViewController.storyboard?.instantiateImageViewerController(for: photo)
-       // self.pageViewController.present(viewController!, animated: true, completion: nil)
     self.pageViewController.navigationController?.pushViewController(viewController!, animated: true)
     }
     

@@ -14,25 +14,24 @@ public enum Pages: String {
     case Search = "search"
     case Category = "category"
     
-    static let all = [Editor, Search, Category]
+    static let all = [(Editor,0), (Search,1), (Category,2)]
     
     static func rawValueFrom(hashValue: Int) ->  String? {
         if hashValue < 0 || hashValue >= all.count { return nil }
         for page in Pages.all {
-            if page.hashValue == hashValue {
-                print(page.rawValue)
-                return page.rawValue
+            if page.0.hashValue == hashValue {
+                return page.0.rawValue
             }
         }
         return nil
     }
     
-    static func pageFrom(hashValue: Int) -> Pages? {
+    static func pageFrom(value: Int) -> Pages? {
         
-        if hashValue < 0 || hashValue >= all.count { return nil }
+        if value < 0 || value >= all.count { return nil }
         for page in Pages.all {
-            if page.hashValue == hashValue {
-                return page
+            if page.1 == value {
+                return page.0
             }
         }
         return nil
@@ -70,7 +69,7 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
         if let nextIdentifier = viewControllerNextTo(identifier: viewController.restorationIdentifier, nextId: -) {
-            return pageViewController.storyboard?.instantiateViewController(with: nextIdentifier, delegate: self)
+        return pageViewController.storyboard?.instantiateViewController(with: nextIdentifier, delegate: self)
 
         }
         
@@ -105,8 +104,9 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
         if identifier == nil { return NSNotFound }
         
         for page in Pages.all {
-            if page.rawValue == identifier {
-                return page.hashValue
+            if page.0.rawValue == identifier {
+                print(page.0.rawValue)
+                return page.1
             }
         }
         
@@ -120,7 +120,7 @@ final class PageCoordinator: NSObject, UIPageViewControllerDelegate,  UIPageView
         if  indexOfVisibleViewController < 0  || indexOfVisibleViewController == NSNotFound
         { return nil }
         
-        return Pages.pageFrom(hashValue: nextId(indexOfVisibleViewController, 1))
+        return Pages.pageFrom(value: nextId(indexOfVisibleViewController, 1))
     }
     
     

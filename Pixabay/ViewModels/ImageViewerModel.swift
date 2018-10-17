@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation
 import RxSwift
 import RxCocoa
+
 class ImageViewerModel: ViewModel {
     var contentRect: CGRect = CGRect.zero
     var photoLoaded = BehaviorRelay<Bool>(value: false)
@@ -28,12 +29,5 @@ class ImageViewerModel: ViewModel {
             return rect
         }
     }
-    
 
-    
-   
-
-    
-    
-    
 }
